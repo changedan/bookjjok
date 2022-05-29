@@ -8,14 +8,17 @@
 		- google api
 <br/>
 ## 구현
+
 ### 메인
 ![ImgGIF-202205292059139](https://user-images.githubusercontent.com/90893596/170873968-adaa57d0-f724-4e2f-b91c-a7f31a68d5d8.gif)
 <br/>
+
 ### 모달
 ![ImgGIF-202205292102146](https://user-images.githubusercontent.com/90893596/170867723-b4ca6735-55e2-45e7-bb6a-6985a57f7c4a.gif)
 <br/>
 ![ImgGIF-202205292103147](https://user-images.githubusercontent.com/90893596/170867771-7439b7c3-9870-46a9-86a4-84ba71fc3780.gif)
 <br/>
+
 ### 반응형
 |반응형|이미지|
 |---|---|
