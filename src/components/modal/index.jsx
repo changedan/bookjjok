@@ -53,7 +53,6 @@ const Bg = styled.div`
   block-size: 100%;
   display: flex;
   align-items: center;
-
   justify-content: center;
 `;
 
@@ -77,7 +76,7 @@ const ModalWrap = styled.div`
   margin: auto;
 
   & img {
-    margin: auto;
+    margin: auto 0;
     padding: 1.2rem;
   }
 
