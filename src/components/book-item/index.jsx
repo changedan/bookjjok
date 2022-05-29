@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
 import styled from "styled-components";
+import Modal from "../modal";
 
 function BookItem({ book }) {
+  const [showModal, setShowModal] = useState(false);
+  const [bookInfo, setBookInfo] = useState("");
+
   return (
     <BookWrap>
-      {book.map((item) => {
+      {book.map((item, i) => {
         let thumbnail =
           item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.thumbnail;
         if (thumbnail !== undefined) {
           return (
-            <BookItemWrap>
-              <img src={thumbnail} alt="" />
-            </BookItemWrap>
+            <Fragment key={i}>
+              <BookItemWrap>
+                <img
+                  src={thumbnail}
+                  alt=""
+                  onClick={() => {
+                    setShowModal(true);
+                    setBookInfo(item);
+                  }}
+                />
+              </BookItemWrap>
+              {showModal ? (
+                <Modal
+                  showModal={showModal}
+                  bookInfo={bookInfo}
+                  onClose={() => {
+                    setShowModal(false);
+                  }}
+                />
+              ) : (
+                <></>
+              )}
+            </Fragment>
           );
         }
       })}
@@ -41,6 +65,7 @@ const BookItemWrap = styled.div`
   padding: 1.2rem 3rem;
   margin: 1rem 0;
   border-radius: 8px;
+  cursor: pointer;
 
   @media (max-width: 900px) {
     padding: 1.2rem 3rem;

@@ -14,9 +14,9 @@ body {
   );
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
 display: none;
-} */
+}
 `;
 
 export default GlobalStyle;
