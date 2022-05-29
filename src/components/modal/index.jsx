@@ -24,14 +24,14 @@ function Modal({ showModal, bookInfo, onClose }) {
       <ModalWrap>
         <img src={thumbnail} alt="" />
         <InfoWrap>
-          <h2>{bookInfo.volumeInfo.title}</h2>
-          <h3>{bookInfo.volumeInfo.authors}</h3>
-          <p>
-            {bookInfo.volumeInfo.description}
+          <h2>
+            {bookInfo.volumeInfo.title}
             <a href={bookInfo.volumeInfo.infoLink}>
               <span className="material-icons-outlined">link</span>
             </a>
-          </p>
+          </h2>
+          <h3>{bookInfo.volumeInfo.authors}</h3>
+          <p>{bookInfo.volumeInfo.description}</p>
         </InfoWrap>
         <Icon>
           <span className="material-icons-outlined" onClick={onClose}>
@@ -61,7 +61,7 @@ const ModalBg = styled.div`
   position: fixed;
   inline-size: 100%;
   block-size: 100%;
-  background-color: rgba(0, 0, 0, 0.008);
+  background-color: rgba(0, 0, 0, 0.01);
   backdrop-filter: blur(0.8px);
 `;
 
@@ -71,13 +71,24 @@ const ModalWrap = styled.div`
   padding: 1rem;
   inline-size: 50rem;
   background-color: whitesmoke;
-  border-radius: 8px;
+  border-radius: 6px;
   transition: all 0.5s ease-in-out;
   display: flex;
   margin: auto;
 
   & img {
-    margin: 1rem;
+    margin: auto;
+    padding: 1.2rem;
+  }
+
+  & p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    font-size: 1rem;
+    line-height: 1rem;
+    height: 6.6rem;
   }
 
   @media (max-width: 900px) and (min-width: 550px) {
@@ -117,7 +128,7 @@ const InfoWrap = styled.div`
 
   & span {
     margin-left: 0.2rem;
-    transform: translate(0%, 25%);
+    transform: translate(0%, 10%);
   }
 `;
 
