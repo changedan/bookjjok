@@ -9,6 +9,19 @@ function Book() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [typing, setTyping] = useState("");
+  const text = "Input the name of the book and press Enter";
+
+  useEffect(() => {
+    const nextTyping = text.slice(0, typing.length + 1);
+
+    if (nextTyping === typing) return;
+    const timeout = setTimeout(() => {
+      setTyping(text.slice(0, typing.length + 1));
+    }, 150);
+
+    return () => clearTimeout(timeout);
+  }, [text, typing]);
 
   const searchBook = (e) => {
     if (e.key === "Enter") {
@@ -38,9 +51,10 @@ function Book() {
         </LoadingWrap>
       ) : (
         <NotLoadingWrap>
+          <TypingWrap>{typing}</TypingWrap>
           <SearchInput
             type="text"
-            placeholder="Input the name of the book and press Enter"
+            placeholder=""
             onKeyPress={searchBook}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -61,8 +75,34 @@ const LoadingWrap = styled.div`
 
 const NotLoadingWrap = styled.div`
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   block-size: 100vh;
+  inline-size: 100vw;
 `;
+
+const TypingWrap = styled.div`
+  opacity: 0.3;
+  font-size: 1.2rem;
+  margin: 1rem;
+  :after {
+    content: "|";
+    animation: blink 1s step-start infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
+`;
+
 export default Book;
